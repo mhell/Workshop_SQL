@@ -95,6 +95,5 @@ SELECT DISTINCT Language FROM CountryLanguage WHERE CountryCode IN (SELECT Count
 # 20: Get the name of the most populous city
 #
 SELECT Name FROM City ORDER BY Population DESC LIMIT 1;
-
 -- SELECT Name FROM City where Population=(SELECT MAX(Population) FROM city);
 
