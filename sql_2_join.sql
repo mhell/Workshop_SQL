@@ -63,16 +63,15 @@ SELECT Name, Language FROM City NATURAL JOIN CountryLanguage WHERE Population BE
 #
 # 15: What names of the cities are in the same country as the city with a population of 122199 (including the that city itself)
 #
--- SELECT DISTINCT City.Name FROM City INNER JOIN Country ON City.CountryCode = (SELECT CountryCode FROM City WHERE Population = 122199);
-SELECT city.name 
-FROM city 
-JOIN city AS other_city ON city.countrycode = other_city.countrycode 
-WHERE other_city.population = 122199;
+SELECT City.Name FROM City WHERE CountryCode = (SELECT CountryCode FROM City WHERE Population = 122199);
+-- SELECT city.name 
+-- FROM city 
+-- JOIN city AS other_city ON city.countrycode = other_city.countrycode 
+-- WHERE other_city.population = 122199;
 -- SELECT name FROM city WHERE countrycode IN (SELECT countrycode FROM city WHERE population = 122199);
 #
 # 16: What names of the cities are in the same country as the city with a population of 122199 (excluding the that city itself)
 #
--- SELECT DISTINCT City.Name FROM City INNER JOIN Country ON City.CountryCode = (SELECT CountryCode FROM City WHERE Population = 122199) WHERE City.Population <> 122199;
 SELECT name FROM city WHERE countrycode IN (SELECT countrycode FROM city WHERE population = 122199) AND Population NOT IN (122199);
 #
 # 17: What are the city names in the country where Luanda is capital?
